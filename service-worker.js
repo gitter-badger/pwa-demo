@@ -6,7 +6,9 @@ self.addEventListener('push', function(event) {
   var title = 'Yay a message.';
   var body = 'We have received a push message.';
   var icon = './images/icons/icon-192x192.png';
-  var tag = 'simple-push-demo-notification-tag';
+  var tag = 'jaja';
+
+  console.log(event.waitUntil);
 
   event.waitUntil(
     self.registration.showNotification(title, {
