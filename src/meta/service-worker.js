@@ -1,14 +1,10 @@
 'use strict';
 
 self.addEventListener('push', function(event) {
-  console.log('Received a push message', event);
-
-  var title = 'Yay a message.';
-  var body = 'We have received a push message.';
+  var title = 'プッシュ通知送信テスト';
+  var body = 'ここにテキストが入ります';
   var icon = './images/icons/icon-192x192.png';
-  var tag = 'jaja';
-
-  console.log(event.waitUntil);
+  var tag = 'test';
 
   event.waitUntil(
     self.registration.showNotification(title, {

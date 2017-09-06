@@ -3,8 +3,12 @@
 var API_KEY = window.GoogleSamples.Config.gcmAPIKey;
 var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
 
-var curlCommandDiv = document.querySelector('.js-curl-command');
+var curlCommandDiv = document.getElementById('js-curl-command');
 var isPushEnabled = false;
+
+curlCommandDiv.addEventListener('click', (event) => {
+  event.target.select();
+});
 
 // This method handles the removal of subscriptionId
 // in Chrome 44 by concatenating the subscription Id
@@ -81,6 +85,7 @@ function unsubscribe() {
           isPushEnabled = false;
           pushButton.disabled = false;
           pushButton.textContent = 'プッシュ通知有効化';
+          pushButton.classList.add('mdl-button--primary');
           return;
         }
 
@@ -92,6 +97,7 @@ function unsubscribe() {
         pushSubscription.unsubscribe().then(function() {
           pushButton.disabled = false;
           pushButton.textContent = 'プッシュ通知有効化';
+          pushButton.classList.add('mdl-button--primary');
           isPushEnabled = false;
         }).catch(function(e) {
           // We failed to unsubscribe, this can lead to
@@ -121,6 +127,7 @@ function subscribe() {
         // The subscription was successful
         isPushEnabled = true;
         pushButton.textContent = 'プッシュ通知無効化';
+        pushButton.classList.remove('mdl-button--primary');
         pushButton.disabled = false;
 
         // TODO: Send the subscription subscription.endpoint
@@ -143,6 +150,7 @@ function subscribe() {
           window.Demo.debug.log('Unable to subscribe to push.', e);
           pushButton.disabled = false;
           pushButton.textContent = 'プッシュ通知有効化';
+          pushButton.classList.add('mdl-button--primary');
         }
       });
   });
@@ -192,6 +200,7 @@ function initialiseState() {
         // Set your UI to show they have subscribed for
         // push messages
         pushButton.textContent = 'プッシュ通知無効化';
+        pushButton.classList.remove('mdl-button--primary');
         isPushEnabled = true;
       })
       .catch(function(err) {
@@ -214,8 +223,7 @@ window.addEventListener('load', function() {
   // enhance and add push messaging support, otherwise continue without it.
   if ('serviceWorker' in navigator) {
     Notification.requestPermission();
-    navigator.serviceWorker.register('./service-worker.js')
-    .then(initialiseState);
+    navigator.serviceWorker.register('/service-worker.js').then(initialiseState);
   } else {
     window.Demo.debug.log('Service workers aren\'t supported in this browser.');
   }

@@ -5,15 +5,15 @@ function Debug() {
 }
 
 Debug.prototype.log = function() {
-  var paragraphElement = document.createElement('p');
+  const paragraphElement = document.createElement('p');
   paragraphElement.textContent = Array.prototype.join.call(arguments, '');
   document.querySelector('.js-log').appendChild(paragraphElement);
 };
 
 window.addEventListener('load', function() {
-  var logDiv = document.querySelector('js-log');
+  const logDiv = document.querySelector('.js-log');
+  const heading = document.createElement('h2');
 
-  var heading = document.createElement('h2');
   heading.textContent = 'Log';
   logDiv.appendChild(heading);
 

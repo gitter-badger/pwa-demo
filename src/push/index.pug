@@ -1,10 +1,23 @@
 extends ../_base
 
-block content
-  .container
-    .js-log
-    h1 プッシュ通知
-    p
-      button.js-push-button.mdl-button.mdl-button--raised.mdl-button--primary(disabled="") プッシュ通知有効化
-    h2 Push送信コマンド
-    .js-curl-command
+block title
+  | プッシュ通知
+
+block demo
+  p
+    button.js-push-button.mdl-button.mdl-button--raised.mdl-button--primary プッシュ通知有効化
+  h2 下記コードをターミナルで叩いてください
+  .mdl-textfield.mdl-js-textfield(style="width: 100%")
+    textarea#js-curl-command(readonly rows="7").mdl-textfield__input
+  .js-log
+
+block code
+  pre code
+
+block spec
+  +specTable('location')
+
+block scripts
+  script(src="./config.js")
+  script(src="./demo.js")
+  script(src="./main.js")
