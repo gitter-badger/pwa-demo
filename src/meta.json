@@ -1,14 +1,9 @@
 {
   "spec": {
     "location": {
-      "pc": {
-        "iOS": "-",
-        "Android": "-"
-      },
-      "sp": {
-        "iOS": "-",
-        "Android": "-"
-      }
+      "pc": "-",
+      "ios": "-",
+      "android": "-"
     }
   }
 }

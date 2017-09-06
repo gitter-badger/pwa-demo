@@ -3,21 +3,19 @@ mixin specTable(key)
 		thead
 			tr
 				th
+				th PC
 				th iOS
 				th Android
 		tbody
 			tr
-				td pc
-				td= spec[key].pc.iOS
-				td= spec[key].pc.Android
-			tr
-				td sp
-				td= spec[key].sp.iOS
-				td= spec[key].sp.Android
+				td
+				td= spec[key].pc
+				td= spec[key].ios
+				td= spec[key].android
 
 - var isComponent = true
 
-block metaVars
+block global
 
 doctype html
 
@@ -78,6 +76,9 @@ html(lang="ja")
 							block code
 						#Spec.mdl-tabs__panel.panel-body
 							block spec
+				else
+					.container
+						block content
 
 		block scripts
 		script.

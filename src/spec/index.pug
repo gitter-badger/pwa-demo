@@ -1,0 +1,23 @@
+extends /_base
+
+block global
+  - isComponent = false;
+
+block title
+  | Spec
+
+block content
+  table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+    thead
+      tr
+        th API
+        th PC
+        th iOS
+        th Android
+    tbody
+      each val, key in spec
+        tr
+          td: a(href=`/${key}`)= key
+          td= val.pc
+          td= val.ios
+          td= val.android

@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const plumber = require('gulp-plumber');
+const watch = require('gulp-watch');
 const browserSync = require('browser-sync').create();
 
 gulp.task('server', ['build'], () => {
@@ -45,9 +46,9 @@ gulp.task('images', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch('./src/styles/**/*.scss', ['sass']);
-  gulp.watch('./src/**/*.pug', ['pug']);
-  gulp.watch('./src/scripts/**/*.js', ['js']);
+  watch('./src/styles/**/*.scss', () => gulp.run(['sass']));
+  watch('./src/**/*.pug', () => gulp.run(['pug']));
+  watch('./src/scripts/**/*.js', () => gulp.run(['js']));
 });
 
 gulp.task('build', ['pug', 'sass', 'js', 'images', 'meta']);
